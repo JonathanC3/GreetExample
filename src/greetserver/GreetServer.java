@@ -8,8 +8,9 @@ public class GreetServer {
     private PrintWriter out;
     private BufferedReader in;
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         GreetServer server=new GreetServer();
+        System.out.println("iniciando greetServer");
         server.start(6666);
     }
     
@@ -20,7 +21,7 @@ public class GreetServer {
         in=new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         String greeting=in.readLine();
             if ("hello server".equals(greeting)) {
-                out.println("hello client");
+                out.println("hello cliente");
             }
             else {
                 out.println("unrecognised greeting");
@@ -32,6 +33,6 @@ public class GreetServer {
         out.close();
         clientSocket.close();
         serverSocket.close();
-        
     }
+    
 }
